@@ -1,0 +1,12 @@
+torch
+torchvision
+torchaudio
+numpy
+datasets
+transformers[torch]
+evaluate
+tokenizers
+msvc-runtime
+matplotlib
+aiogram
+python-decouple
