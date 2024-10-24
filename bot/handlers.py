@@ -54,7 +54,10 @@ async def decided_to_change_context(message: types.Message, state: FSMContext):
 
 @router.message(F.text == "Загрузить контекст")
 async def set_context_command_keyboard(message: types.Message, state: FSMContext):
-    await set_context_command(message, state)
+    if model is None:
+        await message.answer("Выполните команду /start, чтобы запустить бота!")
+    else:
+        await set_context_command(message, state)
 
 
 @router.message(Command("get_context"))
@@ -80,4 +83,6 @@ async def request_command(message: types.Message):
     else:
         data = {"context": [context], "question": [message.text], "id": [0]}
         answer = inference(model, data)[0]["text"]
+        if len(answer) <= 2:
+            answer = "Я не знаю)"
         await message.answer(answer)

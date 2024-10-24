@@ -8,7 +8,7 @@ from transformers import BertTokenizerFast
 MAX_LEN = 256
 DOC_STRIDE = 64
 MAX_ANS_LEN = 256
-MIN_ANS_LEN = 0
+MIN_ANS_LEN = 2
 tokenizer = BertTokenizerFast("../vocab.txt", do_lower_case=False, clean_up_tokenization_spaces=True, padding_side="right")
 
 
